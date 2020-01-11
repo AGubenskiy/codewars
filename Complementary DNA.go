@@ -6,17 +6,13 @@ In DNA strings, symbols "A" and "T" are complements of each other, as "C" and "G
 
 More similar exercise are found here http://rosalind.info/problems/list-view/ (source)
 */
-
-
+import "strings"
+var dnaReplacer *strings.Replacer = strings.NewReplacer(
+  "A", "T",
+  "T", "A",
+  "C", "G",
+  "G", "C",
+)
 func DNAStrand(dna string) string {
-	var res string
-	for i:=0;i<len(dna);i++{
-		switch string(dna[i]) {
-		case "C":res+="G"
-		case "G":res+="C"
-		case "A":res+="T"
-		case "T":res+="A"
-		}
-	}
-	return res
+ return dnaReplacer.Replace(dna)
 }
