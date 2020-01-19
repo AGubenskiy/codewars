@@ -1,19 +1,20 @@
-func Comp(array1 []int, array2 []int) (r bool,err error) {
-	if err != nil {
-		return false,err
-	}
-	fmt.Println(len(array1),len(array2))
-	if (len(array1) == 0 && len(array2) == 0) || ( fmt.Sprint(array1)==fmt.Sprint(array2)){
-		return true,nil
-	}else if len(array1) != len(array1) || len(array1) == 0 || len(array2) == 0 || array1==nil||array2==nil{
-		return false,nil
-	}else
-	{
-		for i,x:= range array1{
-			array1[i]=x*x
+package kata
+import (
+	"math"
+)
+func ListSquared(m, n int)  [][]int {
+	var  p float64 =0
+	var res [][]int=make([][]int, 0)
+	for x:=m;x<n+1;x++{
+		p=0
+		for i:=1;i<x+1;i++{
+			if x%i==0{
+				p+=float64(i*i)
+			}
 		}
-		sort.Ints(array1)
-		sort.Ints(array2)
-		return reflect.DeepEqual(array1, array2),nil
+if math.Sqrt(p)-math.Round(math.Sqrt(p))==0{
+res=append(res,[]int{x,int(p)})
+}
 	}
-	}
+return res
+}
